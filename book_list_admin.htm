@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+          <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+          <link rel="stylesheet" href="user.css">
+          <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+          <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+          
+     </head>
+     <div class="navbar navbar-expand-lg shadow">
+          <div id="mySidenav" class="sidenav" style="float: left!important;">
+               <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+               <div class=" container" style="width: auto;height:auto;"><img class="rounded-circle" src="https://placeimg.com/150/150/people"/></div>
+               <h4 style="color: white;text-align:center;">Hello User!</h4>
+               <a class="active" href="admin-home.htm"><span><i class="fa fa-home"></i></span> Home</a>
+                         <a href="admin-profile.htm"><span><i class="fa fa-user"></i></span> Profile</a>
+                         <a href="book_list_admin.htm"><span><i class="fa fa-book"></i></span> Book-list</a>
+                         <a href="student-list.htm"><span><i class="fa fa-address-book"></i></span>  Student-list</a>
+                         <a href="faculty-list.htm"><span><i class="fa fa-clipboard"></i></span> Faculty-list</a>
+                         <a href="admin-complaint.htm"><span><i class="fa fa-edit"></i></span> Complaint</a>
+                         <a href="admin-complaint-list.htm"><span><i class="fa fa-list"></i></span> Complaint-list</a>
+                         <a href="admin-payment.htm"><span><i class="fa fa-usd"></i></span> Payment</a>
+                         <a href="admin-login.htm"><span><i class="fa fa-sign-out"></i></span> Logout</a>
+             </div>
+             <span style="font-size:24px;cursor:pointer" onclick="openNav()">&#9776; </span>
+
+          <script>
+          function openNav() {
+          document.getElementById("mySidenav").style.width = "250px";
+          }
+
+          function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+          }
+          </script>
+          <a class="navbar-brand" href="#" style="color: black;background-color:white">
+               <img src="images/maverick.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+               Book Bank
+          </a>
+          
+          <div class="col-md-6  mx-auto shadow search-box" style="border-radius: 25px;padding-left:25px;padding-top:8px;padding-bottom:8px;">
+               <form action="list.htm"  method="POST">
+                     <input class="serach" type="text" name="serach" placeholder="Search ..." style="width: 80%;font-size:18px;border:none;"required>
+                     <span><a class="bg-white" href="book_list_admin.htm" style="font-size:15px;margin:0px;float:right!important;border:none;"><i class="fa fa-search"></i></a></span>
+               </form>
+           </div>
+           <div style="float: inline-end;margin-left:10px;">
+                <a href = "admin-login.htm" style="color:white;font-size:16px;text-decoration:none;"> <button class="btn btn-success"><span><i class="fa fa-user" aria-hidden="true"></i></span> Logout</button></a>
+           </div>
+     </div>
+     <body>
+          
+          <div class="container shadow-lg mb-5" style="margin-top: 80px;margin-bottom:25%;">
+               <h3>List of Books ...</h3><br>
+               <div class="container shadow" style="width: 75%;border-radius:25px;">
+                    <h3>Add Book ...</h3>
+               <script>
+                    function validateForm(){
+                         if((document.forms["myForm"]["name"].value == "") || (document.forms["myForm"]["author"].value == "")||(document.forms["myForm"]["date"].value == "")||(document.forms["myForm"]["rate"].value == "")||(document.forms["myForm"]["type"].value == "")||(document.forms["myForm"]["avail"].value == "")||(document.forms["myForm"]["desc"].value == "")){
+                              alert("Please fill the form with required details so that it can be added to the listy of books!");
+                         }
+                         else{
+                              var table = document.getElementById("table");
+                              var row = table.insertRow(0);
+                              var cell = row.insertCell(0);
+                              cell.innerHTML = "0";
+                         }
+                    }
+               </script>
+
+               <form name="myForm"  onsubmit="return validateForm()" >
+                    <p class="mt-5" style="font-size: 16px;"><b>Book Name </b></p><br>
+                    <div class="col-sm-12 mx-auto shadow" style="border-radius: 25px;padding-left:25px;padding-top:8px;padding-bottom:8px;">
+                         <input class="serach" type="text" name="name" placeholder="Name of the Book" style="width:30%;font-size:18px;border:none">
+                    </div><br><br>
+                    <p class="mt-5" style="font-size: 16px;"><b>Author </b></p><br>
+                    <div class="col-sm-12 mx-auto shadow" style="border-radius: 25px;padding-left:25px;padding-top:8px;padding-bottom:8px;">
+                         <input class="serach" type="text" name="author" placeholder="Author of the Book" style="width:30%;font-size:18px;border:none">
+                    </div><br><br>
+                    <p class="mt-5" style="font-size: 16px;"><b>Published on </b></p><br>
+                    <div class="col-sm-12 mx-auto shadow" style="border-radius: 25px;padding-left:25px;padding-top:8px;padding-bottom:8px;">
+                         <input class="serach" type="date" name="date" placeholder="Published on" style="width:30%;font-size:18px;border:none">
+                    </div><br><br>
+                    <p class="mt-5" style="font-size: 16px;"><b>Rating </b></p><br>
+                    <div class="col-sm-12 mx-auto shadow" style="border-radius: 25px;padding-left:25px;padding-top:8px;padding-bottom:8px;">
+                         <input class="serach" type="number" name="rate" placeholder="Rating of Book out of 5" style="width:30%;font-size:18px;border:none">
+                    </div><br><br>
+                    <p class="mt-5" style="font-size: 16px;"><b>Type of the Book </b></p><br>
+                    <div class="col-sm-12 mx-auto shadow" style="border-radius: 25px;padding-left:25px;padding-top:8px;padding-bottom:8px;">
+                         <input class="serach" type="text" name="type" placeholder="Type of the Book" style="width:30%;font-size:18px;border:none">
+                    </div><br><br>
+                    <p class="mt-5" style="font-size: 16px;"><b>Availability </b></p><br>
+                    <div class="col-sm-12 mx-auto shadow" style="border-radius: 25px;padding-left:25px;padding-top:8px;padding-bottom:8px;">
+                         <input class="serach" type="text" name="avail" placeholder="Availability of the Book" style="width:30%;font-size:18px;border:none">
+                    </div><br><br>
+                    <p class="mt-5" style="font-size: 16px;"><b>Description </b></p><br>
+                    <div class="col-sm-12 mx-auto shadow" style="border-radius: 25px;padding-left:25px;padding-top:8px;padding-bottom:8px;">
+                         <input class="serach" type="text" name="desc" placeholder="Description of the Book" style="width:30%;font-size:18px;border:none">
+                    </div><br><br>
+                    
+                    <br><br><br>
+                    <div class=" conatiner mx-auto mb-5" style="margin-left:30px;">
+                         <input type="submit" class="btn btn-success " style="padding:16px;width:100%;border-radius:25px;" data-toggle="modal" data-target="#myModal" value="Add +"/>
+                    </div>
+               </form>
+               </div>
+               <br><br>
+               <table id="table">
+               <tbody>
+               <tr>
+               <div class="row" style="width: 100%;">
+                    
+                    <div class="col-md-3 col-sm-3" style="padding:16px;border-right:1px solid rgb(226, 226, 226)">
+                         <img src="images/book1.jpg" width="150px" height="200px">
+                    </div>
+                    <div class="col-md-9 col-sm-12" style="padding:16px">
+                         <h3 style="color: black;font-size:20px;text-align:left"><b>Harry Potter:Gobblet of Fire</b></h3><br>
+                         <p><b>Author</b> :   JK Rowling</p>
+                         <p><b>Published on</b> :   2012</p>
+                         <p><b>Rating</b> :   5/5</p>
+                         <p><b>Type of Book</b> :   Interesting, Sci-Fi,...</p>
+                         <p style="color: green;font-size:16px;">Available Currently</p>
+                         <button class="btn btn-warning mr-5"data-toggle="collapse" href="#book1" role="button" aria-expanded="false" aria-controls="book1">Read More About this...</button>
+                         <button class="btn btn-success">Borrow</button><br>
+                         <br>
+                         <p id="book1" class="collapse">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+                    </div>
+               </div>
+          </tr>
+          <tr>
+               <div class="row" style="width: 100%;">
+                    <div class="col-md-3 col-sm-12" style="width: 25%;padding:16px;border-right:1px solid rgb(226, 226, 226)">
+                         <img src="images/book2.jpg" width="150px" height="200px">
+                    </div>
+                    <div class="col-md-9 col-sm-12" style="padding:16px">
+                         <h3 style="color: black;font-size:20px;text-align:left"><b>Father Tuck's (Coloring Book)</b></h3><br>
+                         <p><b>Author</b> :   Mark Twain</p>
+                         <p><b>Published on</b> :   2008</p>
+                         <p><b>Rating</b> :   3.5/5</p>
+                         <p><b>Type of Book</b> :   Kids, Colorful,...</p>
+                         <p style="color: green;font-size:16px;">Available Currently</p>
+                         <button class="btn btn-warning mr-5"data-toggle="collapse" href="#book2" role="button" aria-expanded="false" aria-controls="book2">Read More About this...</button>
+                         <button class="btn btn-success">Borrow</button><br>
+                         <br>
+                         <p id="book2" class="collapse">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+                    </div>
+               </div>
+          </tr><tr>
+               <div class="row" style="width: 100%;">
+                    <div class="col-md-3 col-12" style="width: 25%;padding:16px;border-right:1px solid rgb(226, 226, 226)">
+                         <img src="images/book3.jpeg" width="150px" height="200px">
+                    </div>
+                    <div class="column" style="padding:16px">
+                         <h3 style="color: black;font-size:20px;text-align:left"><b>Game of Thrones</b></h3><br>
+                         <p><b>Author</b> :   Jimmy Karl</p>
+                         <p><b>Published on</b> :   1998</p>
+                         <p><b>Rating</b> :   5/5</p>
+                         <p><b>Type of Book</b> :   Interesting, Sci-Fi,...</p>
+                         <p style="color: green;font-size:16px;">Available Currently</p>
+                         <button class="btn btn-warning mr-5"data-toggle="collapse" href="#book3" role="button" aria-expanded="false" aria-controls="book3">Read More About this...</button>
+                         <button class="btn btn-success">Borrow</button><br>
+                         <br>
+                         <p id="book3" class="collapse">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+                    </div>
+               </div>
+               </tr><tr>
+               <div class="row" style="width: 100%;">
+                    <div class="col-md-3 col-sm-12" style="width: 25%;padding:16px;border-right:1px solid rgb(226, 226, 226)">
+                         <img src="images/book4.jpg" width="150px" height="200px">
+                    </div>
+                    <div class="col-md-9 col-sm-12" style="padding:16px">
+                         <h3 style="color: black;font-size:20px;text-align:left"><b>The Famous Five</b></h3><br>
+                         <p><b>Author</b> :   Terry Jeffords</p>
+                         <p><b>Published on</b> :   2011</p>
+                         <p><b>Rating</b> :   4/5</p>
+                         <p><b>Type of Book</b> :   Interesting, Sci-Fi,...</p>
+                         <p style="color: green;font-size:16px;">Available Currently</p>
+                         <button class="btn btn-warning mr-5"data-toggle="collapse" href="#book4" role="button" aria-expanded="false" aria-controls="book4">Read More About this...</button>
+                         <button class="btn btn-success">Borrow</button><br>
+                         <br>
+                         <p id="book4" class="collapse">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+                    </div>
+               </div>
+               </tr><tr>
+               <div class="row" style="width: 100%;">
+                    <div class="col-md-3 col-sm-12" style="width: 25%;padding:16px;border-right:1px solid rgb(226, 226, 226)">
+                         <img src="images/book5.jpg" width="150px" height="200px">
+                    </div>
+                    <div class="col-md-9 col-sm-12" style="padding:16px">
+                         <h3 style="color: black;font-size:20px;text-align:left"><b>The Time Machine</b></h3><br>
+                         <p><b>Author</b> :   Raymond Holt</p>
+                         <p><b>Published on</b> :   2010</p>
+                         <p><b>Rating</b> :   5/5</p>
+                         <p><b>Type of Book</b> :   Interesting, Sci-Fi,...</p>
+                         <p style="color: green;font-size:16px;">Available Currently</p>
+                         <button class="btn btn-warning mr-5"data-toggle="collapse" href="#book5" role="button" aria-expanded="false" aria-controls="book5">Read More About this...</button>
+                         <button class="btn btn-success">Borrow</button><br>
+                         <br>
+                         <p id="book5" class="collapse">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+                    </div>
+               </div>
+               </tr><tr>
+               <div class="row" style="width: 100%;">
+                    <div class="col-md-3 col-sm-12" style="width: 25%;padding:16px;border-right:1px solid rgb(226, 226, 226)">
+                         <img src="images/book6.jpg" width="150px" height="200px">
+                    </div>
+                    <div class="col-md-9 col-sm-12" style="padding:16px">
+                         <h3 style="color: black;font-size:20px;text-align:left"><b>Journey to the Center of The Earth</b></h3><br>
+                         <p><b>Author</b> :   Amy Santiago</p>
+                         <p><b>Published on</b> :   2005</p>
+                         <p><b>Rating</b> :   4.5/5</p>
+                         <p><b>Type of Book</b> :   Interesting, Sci-Fi,...</p>
+                         <p style="color: green;font-size:16px;">Available Currently</p>
+                         <button class="btn btn-warning mr-5"data-toggle="collapse" href="#book6" role="button" aria-expanded="false" aria-controls="book6">Read More About this...</button>
+                         <button class="btn btn-success">Borrow</button><br>
+                         <br>
+                         <p id="book6" class="collapse">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+                    </div>
+               </div>
+               </tr><tr>
+               <div class="row" style="width: 100%;">
+                    <div class="col-md-3 col-sm-12" style="width: 25%;padding:16px;border-right:1px solid rgb(226, 226, 226)">
+                         <img src="images/book7.jpg" width="150px" height="200px">
+                    </div>
+                    <div class="col-md-9 col-sm-12" style="padding:16px">
+                         <h3 style="color: black;font-size:20px;text-align:left"><b>Avengers</b></h3><br>
+                         <p><b>Author</b> :   Stan Lee</p>
+                         <p><b>Published on</b> :   1990</p>
+                         <p><b>Rating</b> :   5/5</p>
+                         <p><b>Type of Book</b> :   Interesting, Sci-Fi,...</p>
+                         <p style="color: green;font-size:16px;">Available Currently</p>
+                         <button class="btn btn-warning mr-5"data-toggle="collapse" href="#book7" role="button" aria-expanded="false" aria-controls="book7">Read More About this...</button>
+                         <button class="btn btn-success">Borrow</button><br>
+                         <br>
+                         <p id="book7" class="collapse">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+                    </div>
+               </div>
+               </tr><tr>
+               <div class="row" style="width: 100%;">
+                    <div class="col-md-3 col-sm-12" style="width: 25%;padding:16px;border-right:1px solid rgb(226, 226, 226)">
+                         <img src="images/book8.jpg" width="150px" height="200px">
+                    </div>
+                    <div class="col-md-9 col-sm-12" style="padding:16px">
+                         <h3 style="color: black;font-size:20px;text-align:left"><b>Captain America : Winter Solider</b></h3><br>
+                         <p><b>Author</b> :   Stan Lee</p>
+                         <p><b>Published on</b> :   1990</p>
+                         <p><b>Rating</b> :   5/5</p>
+                         <p><b>Type of Book</b> :   Interesting, Sci-Fi,...</p>
+                         <p style="color: red;font-size:16px;"> Currently Unavailable</p>
+                         <button class="btn btn-warning mr-5"data-toggle="collapse" href="#book8" role="button" aria-expanded="false" aria-controls="book8">Read More About this...</button>
+                         <button class="btn btn-success">Borrow</button><br>
+                         <br>
+                         <p id="book8" class="collapse">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+                    </div>
+               </div>
+               </tr>
+          </tbody>
+          </table>
+          </div>
+          <footer>
+               <div class="row mt-5" style="width:100%">
+                    <div class="col-md-5 col-sm-12 col-12 mr-5" style="padding:8px;">
+                         <h3 style="text-align: left;">About</h3><br>
+                         <p style="text-align: left;">We are the fastest growing Book Bank in India. We have banks all around the globe. We have our banking system in 100+ countries across the world. There are 5 million customers accross the globe with smiles. Our services are free. We provide books to customers on various plans. The customers can utilize our services at free of cost. We provide free shipping services for the books for our customers. Be a happy customer today at our book bank!. <b>5 Million happy customers and counting !</b></h3><br></p>
+                         <h3 style="text-align: left;">Follow us on ...</h3><br>
+                         <div class="row" style="padding: 5px;">
+                              <p class="ml-2"  style="font-size: 50px;margin-right:50px;"><span><a href="#"><i class="fa fa-facebook-square" style="width:25px;height:25px;"></i></a></span></p>
+                              <p  style="font-size: 50px;margin-right:50px;"><span><a href="#"><i class="fa fa-twitter-square" style="width:25px;height:25px;"></i></a></span></p>
+                              <p  style="font-size: 50px;margin-right:50px;"><span><a href="#"><i class="fa fa-github-square" style="width:25px;height:25px;color:white;"></i></a></span></p>
+                              <p  style="font-size: 50px;margin-right:50px;"><span><a href="#"><i class="fa fa-instagram" style="width:25px;height:25px;color:pink;"></i></a></span></p>
+                         </div>
+                    </div>
+                    <div class="col-md-3 col-sm-12 col-12" style="padding:8px;">
+                         <h3 style="text-align: left;">Quick Links</h3>
+                         <ul>
+                         <li><p><a  href="admin-home.htm"><span><i class="fa fa-home"></i></span> Home</a>
+                         <li><p><a href="admin-profile.htm"><span><i class="fa fa-user"></i></span> Profile</a></p></li>
+                         <li><p><a href="book_list_admin.htm"><span><i class="fa fa-book"></i></span> Book-list</a></p></li>
+                         <li><p><a href="student-list.htm"><span><i class="fa fa-address-book"></i></span>  Student-list</a></p></li>
+                         <li><p><a href="faculty-list.htm"><span><i class="fa fa-clipboard"></i></span> Faculty-list</a></p></li>
+                         <li><p><a href="admin-complaint.htm"><span><i class="fa fa-edit"></i></span> Complaint</a></p></li>
+                         <li><p><a href="admin-complaint-list.htm"><span><i class="fa fa-list"></i></span> Complaint-list</a></p></li>
+                         <li><p><a href="admin-payment.htm"><span><i class="fa fa-usd"></i></span> Payment</a></p></li>
+                         <li><p><a href="admin-login.htm"><span><i class="fa fa-sign-out"></i></span> Logout</a></p></li>
+                         </ul>
+                    </div>
+                    <div class="col-md-3 col-sm-12 col-12 ml-2" style="width: 20%;padding:8px;">
+                         <h3 style="text-align: left;">Contact Us ...</h3>
+                         <p style="font-size: 15px;"><b>Phone No : </b>+585-9955663322(US)</p>
+                         <p style="font-size: 15px;"><b>Mail : </b>tony@stark_industries.com</p>
+                         <p style="font-size: 15px;"><b>Address : </b>Stark Towers, Manhattan,200 Park Avenue, Upstates,United States of America </p>
+                    </div>
+                    
+               </div>
+               <div class="container mx-auto mt-5">
+                    <p style="text-align: center;">All copyrights are reserved on the name of <a href="#">@chaithanyarlk</a></p><br>
+                    <p style="text-align: center;">© 2020 Copyright: <a href="#">@chaithanyarlk</a></p>
+               </div>
+          </footer>
+     </body>
+     
+     
+</html>

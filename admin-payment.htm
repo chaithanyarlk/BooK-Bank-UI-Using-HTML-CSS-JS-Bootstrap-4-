@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+          <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+          <link rel="stylesheet" href="user.css">
+          <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+          <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+     </head>
+     <div class="navbar navbar-expand-lg shadow">
+          <div id="mySidenav" class="sidenav" style="float: left!important;">
+               <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+               <div class=" container" style="width: auto;height:auto;"><img class="rounded-circle" src="https://placeimg.com/150/150/people"/></div>
+               <h4 style="color: white;text-align:center;">Hello User!</h4>
+               <a class="active" href="admin-home.htm"><span><i class="fa fa-home"></i></span> Home</a>
+                         <a href="admin-profile.htm"><span><i class="fa fa-user"></i></span> Profile</a>
+                         <a href="book_list_admin.htm"><span><i class="fa fa-book"></i></span> Book-list</a>
+                         <a href="student-list.htm"><span><i class="fa fa-address-book"></i></span>  Student-list</a>
+                         <a href="faculty-list.htm"><span><i class="fa fa-clipboard"></i></span> Faculty-list</a>
+                         <a href="admin-complaint.htm"><span><i class="fa fa-edit"></i></span> Complaint</a>
+                         <a href="admin-complaint-list.htm"><span><i class="fa fa-list"></i></span> Complaint-list</a>
+                         <a href="admin-payment.htm"><span><i class="fa fa-usd"></i></span> Payment</a>
+                         <a href="admin-login.htm"><span><i class="fa fa-sign-out"></i></span> Logout</a>
+             </div>
+             <span style="font-size:24px;cursor:pointer" onclick="openNav()">&#9776; </span>
+
+          <script>
+          function openNav() {
+          document.getElementById("mySidenav").style.width = "250px";
+          }
+
+          function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+          }
+          </script>
+          <a class="navbar-brand" href="#" style="color: black;background-color:white">
+               <img src="images/maverick.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+               Book Bank
+          </a>
+          
+          <div class="col-md-6  mx-auto shadow search-box" style="border-radius: 25px;padding-left:25px;padding-top:8px;padding-bottom:8px;">
+               <form action="list.htm"  method="POST">
+                     <input class="serach" type="text" name="serach" placeholder="Search ..." style="width: 80%;font-size:18px;border:none;"required>
+                     <span><a class="bg-white" href="book_list_admin.htm" style="font-size:15px;margin:0px;float:right!important;border:none;"><i class="fa fa-search"></i></a></span>
+               </form>
+           </div>
+           <div style="float: inline-end;margin-left:10px;">
+                <a href = "admin-login.htm" style="color:white;font-size:16px;text-decoration:none;"> <button class="btn btn-success"><span><i class="fa fa-user" aria-hidden="true"></i></span> Logout</button></a>
+           </div>
+     </div>
+     <body>
+          
+          <div class="container shadow-lg" style="margin-top: 80px;margin-bottom:25%;">
+               <div class="row" style="width: 100%;">
+                    <div class="col-md-6 col-sm-12 mr-8 mt-5" style="background-color:white">
+                         <img class="rounded" src="images/payment.jpg" style="display: block;max-width:100%;height:50%;margin:auto;">
+                         <h2 class="ml-5"> Safe and Secure</h2>
+                         <p class="ml-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                               ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                               Safe and secure way of making payment through our gateway for processing penalty fee.</p>
+                    </div>
+                    <div class="col-md-5 col-sm-12 ml-5 mt-5 bg-whie shadow" style="padding:16px;border-radius:25px;float:right!important;">
+                         <h3>Card Details for Payment ...</h3><br><br>
+                         <script>
+                              function validateForm(){
+                                   if((document.forms["myForm"]["card"].value).toString().length!=16){
+                                        alert("Please check the card number!");
+                                   }
+                                   if((document.forms["myForm"]["cvv"].value).toString().length!=3){
+                                        alert("Please check the CVV number!");
+                                   }
+                              }
+                              
+                         </script>
+                         <form action="admin-payment.htm" name="myForm" onsubmit="return validateForm()" method="POST">
+                              <p style="font-size: 16px;"><b>Card Number</b></p><br>
+                              <div class="col-sm-12 mx-auto shadow" style="border-radius: 25px;padding-left:25px;padding-top:8px;padding-bottom:8px;">
+                                   <input class="serach" type="number" name="card" placeholder="xxxx xxxx xxxx 5005" style="width: 80%;font-size:18px;border:none">
+                                   <span><button class="bg-white" style="font-size:15px;margin:0px;float:right!important;border:none;"><i class="fa fa-credit-card"></i></button></span>
+                              </div><br><br><br>
+                              <p class="mt-5" style="font-size: 16px;"><b>Name on the Card </b></p><br>
+                              <div class="col-sm-12 mx-auto shadow" style="border-radius: 25px;padding-left:25px;padding-top:8px;padding-bottom:8px;">
+                                   <input class="serach" type="text" name="name" placeholder="Mr/Mrs." style="width: 80%;font-size:18px;border:none">
+                                   <span><button class="bg-white" style="font-size:15px;margin:0px;float:right!important;border:none;"><i class="fa fa-user"></i></button></span>
+                              </div><br><br><br>
+                              <p class="mt-5" style="font-size: 16px;"><b>Expiry Date </b></p><br>
+                              <div class="col-sm-12 mx-auto shadow" style="border-radius: 25px;padding-left:25px;padding-top:8px;padding-bottom:8px;">
+                                   <input class="serach" type="date" name="date" placeholder="Mr/Mrs." style="width: 80%;font-size:18px;border:none">
+                                   
+                              </div><br><br><br>
+                              <p class="mt-5" style="font-size: 16px;"><b>CVV </b></p><br>
+                              <div class="col-sm-12 mx-auto shadow" style="border-radius: 25px;padding-left:25px;padding-top:8px;padding-bottom:8px;">
+                                   <input class="serach" type="password" name="cvv" placeholder="CVV" style="width: 80%;font-size:18px;border:none">
+                                   <span><button class="bg-white" style="font-size:15px;margin:0px;float:right!important;border:none;"><i class="fa fa-key"></i></button></span>
+                              </div><br><br><br>
+                              <div class="mt-5">
+                                   <a href="/student.htm"><button class="btn btn-danger">Cancel</button></a> 
+                                   <input type="submit" value="Pay" class="btn btn-success ml-5" style="float:right!important;" data-toggle="modal" data-target="#myModal"/>
+                              </div>
+                         </form>
+                    </div>
+               </div>
+               <!-- The Modal -->
+               <div class="modal" id="myModal">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                    
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                         <h4 class="modal-title" style="color:green">Payment is Successful</h4>
+                         <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                         <P>The payment for the item that you have paid is successful. Shortly you will be redirected to the recipt page. The transaction details are</p><br><p> <b>trancsction ID : ASqtB57365RtQw</b></p>
+                    </div>
+                    
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                    
+                    </div>
+                    </div>
+               </div>
+          </div>
+          <footer>
+               <div class="row mt-5" style="width:100%">
+                    <div class="col-md-5 col-sm-12 col-12 mr-5" style="padding:8px;">
+                         <h3 style="text-align: left;">About</h3><br>
+                         <p style="text-align: left;">We are the fastest growing Book Bank in India. We have banks all around the globe. We have our banking system in 100+ countries across the world. There are 5 million customers accross the globe with smiles. Our services are free. We provide books to customers on various plans. The customers can utilize our services at free of cost. We provide free shipping services for the books for our customers. Be a happy customer today at our book bank!. <b>5 Million happy customers and counting !</b></h3><br></p>
+                         <h3 style="text-align: left;">Follow us on ...</h3><br>
+                         <div class="row" style="padding: 5px;">
+                              <p class="ml-2"  style="font-size: 50px;margin-right:50px;"><span><a href="#"><i class="fa fa-facebook-square" style="width:25px;height:25px;"></i></a></span></p>
+                              <p  style="font-size: 50px;margin-right:50px;"><span><a href="#"><i class="fa fa-twitter-square" style="width:25px;height:25px;"></i></a></span></p>
+                              <p  style="font-size: 50px;margin-right:50px;"><span><a href="#"><i class="fa fa-github-square" style="width:25px;height:25px;color:white;"></i></a></span></p>
+                              <p  style="font-size: 50px;margin-right:50px;"><span><a href="#"><i class="fa fa-instagram" style="width:25px;height:25px;color:pink;"></i></a></span></p>
+                         </div>
+                    </div>
+                    <div class="col-md-3 col-sm-12 col-12" style="padding:8px;">
+                         <h3 style="text-align: left;">Quick Links</h3>
+                         <ul>
+                         <li><p><a  href="admin-home.htm"><span><i class="fa fa-home"></i></span> Home</a>
+                         <li><p><a href="admin-profile.htm"><span><i class="fa fa-user"></i></span> Profile</a></p></li>
+                         <li><p><a href="book_list_admin.htm"><span><i class="fa fa-book"></i></span> Book-list</a></p></li>
+                         <li><p><a href="student-list.htm"><span><i class="fa fa-address-book"></i></span>  Student-list</a></p></li>
+                         <li><p><a href="faculty-list.htm"><span><i class="fa fa-clipboard"></i></span> Faculty-list</a></p></li>
+                         <li><p><a href="admin-complaint.htm"><span><i class="fa fa-edit"></i></span> Complaint</a></p></li>
+                         <li><p><a href="admin-complaint-list.htm"><span><i class="fa fa-list"></i></span> Complaint-list</a></p></li>
+                         <li><p><a href="admin-payment.htm"><span><i class="fa fa-usd"></i></span> Payment</a></p></li>
+                         <li><p><a href="admin-login.htm"><span><i class="fa fa-sign-out"></i></span> Logout</a></p></li>
+                         </ul>
+                    </div>
+                    <div class="col-md-3 col-sm-12 col-12 ml-2" style="width: 20%;padding:8px;">
+                         <h3 style="text-align: left;">Contact Us ...</h3>
+                         <p style="font-size: 15px;"><b>Phone No : </b>+585-9955663322(US)</p>
+                         <p style="font-size: 15px;"><b>Mail : </b>tony@stark_industries.com</p>
+                         <p style="font-size: 15px;"><b>Address : </b>Stark Towers, Manhattan,200 Park Avenue, Upstates,United States of America </p>
+                    </div>
+                    
+               </div>
+               <div class="container mx-auto mt-5">
+                    <p style="text-align: center;">All copyrights are reserved on the name of <a href="#">@chaithanyarlk</a></p><br>
+                    <p style="text-align: center;">© 2020 Copyright: <a href="#">@chaithanyarlk</a></p>
+               </div>
+          </footer>
+     </body>
+</html>
